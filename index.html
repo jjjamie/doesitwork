@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Does it work?</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+        }
+        h1 {
+            font-size: 5rem;
+            color: #333;
+        }
+        .emoji {
+            font-size: 10rem;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="message">No.</h1>
+    <div class="emoji" id="emoji"></div>
+
+    <script>
+        // Arrays of emojis
+        const sadEmojis = [
+            "😢", "😭", "☹️", "😞", "😔", "😟", "😩", "😿", "🥺", 
+            "😣", "😖", "🙁", "😥", "😫", "😬", "😓", "😪", "😕", 
+            "💔", "😿", "🥴", "🫤", "😧", "😮‍💨", "🥶", "😰", "🥱",
+            "😔", "😵‍💫", "🙃", "🤯", "😟", "🫣", "🫠"
+        ];
+        const happyEmojis = [
+            "😀", "😃", "😄", "😁", "😆", "😊", "🙂", "🙃", "😇", 
+            "😍", "🥰", "😘", "😚", "😙", "😋", "😜", "😝", "🤩", 
+            "😎", "🤗", "😌", "😺", "😸", "😻", "😽", "🎉", "✨"
+        ];
+
+        // Function to check the URL and display content
+        function updateContent() {
+            const messageElement = document.getElementById('message');
+            const emojiElement = document.getElementById('emoji');
+
+            // Check if the URL ends with "?"
+            if (window.location.href.endsWith("?")) {
+                messageElement.textContent = "Yes.";
+                const randomHappyEmoji = happyEmojis[Math.floor(Math.random() * happyEmojis.length)];
+                emojiElement.textContent = randomHappyEmoji;
+            } else {
+                messageElement.textContent = "No.";
+                const randomSadEmoji = sadEmojis[Math.floor(Math.random() * sadEmojis.length)];
+                emojiElement.textContent = randomSadEmoji;
+            }
+        }
+
+        // Run the function on page load
+        updateContent();
+    </script>
+</body>
+</html>
